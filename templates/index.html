@@ -1,0 +1,180 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Web Site - Login</title>
+    <link href="{% static 'gedcom.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'print.css' %}" rel="stylesheet" type="text/css" media="print">
+    <link rel="shortcut icon" href="http://clfn.on.ca:8080/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="{% static 'fontsize.js' %}"></script>
+    <link href="{% static 'Sky_Blue.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Sky_Blue" disabled="">
+    <link href="{% static 'Antique.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Antique" disabled="">
+    <link href="{% static 'Sky.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Sky" disabled="">
+    <link href="{% static 'Clear_White.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Clear_White" disabled="">
+    <link href="{% static 'Green_Field.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Green_Field" disabled="">
+    <link href="{% static 'Silverline.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Silverline" disabled="">
+    <link href="{% static 'Elegant_Mauve.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Elegant_Mauve" disabled="">
+    <link href="{% static 'Nightlock.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Nightlock" disabled="">
+    <link href="{% static 'Sky_Blue_Clear.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Sky_Blue_Clear" disabled="">
+    <link href="{% static 'Elegant_Corsiva.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Elegant_Corsiva" disabled="">
+    <link href="{% static 'Modern.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Modern">
+    <link href="{% static 'Elegant_Modern.css' %}" rel="alternate stylesheet" type="text/css" media="screen" title="Elegant_Modern" disabled="">
+    <script type="text/javascript">  var defaultskin="Modern";</script>
+    <script src="{% static 'styleswitch.js' %}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'Modern.css' %}">
+    <script type="text/javascript" src="{% static 'popup_menu.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'popup_menu.css' %}">
+    <link rel="stylesheet" media="(max-width: 640px)" href="{% static 'gedcom_mobile.css' %}">
+    <style type="text/css"> #turnkey-credit { font-family: Tahoma,Sans,Arial,Helvetica,Verdana,sans-serif; font-size: 11px; text-align: center; } #turnkey-credit a { text-decoration: none; } #turnkey-credit a:hover { text-decoration: underline; } body.wp-admin #turnkey-credit, body#image #turnkey-credit, body#media-upload #turnkey-credit { display: none; } </style>
+</head>
+<body onload="checkCookie()">
+    <div class="silverbody">
+        <div id="top_menu">
+            <div id="top" style="direction:ltr;">
+                <div style="direction:ltr;">
+                    <span id="top_website_name">&nbsp;
+                        <a href="http://www.humo-gen.com/">Web Site</a>
+                    </span>&nbsp;&nbsp;
+                </div>
+                    <form method="post" action="http://clfn.on.ca:8080/list.php" id="top_quicksearch">
+                        <input type="hidden" name="index_list" value="quicksearch">
+                        <input type="hidden" name="search_database" value="tree_selected">
+                        <input type="text" name="quicksearch" value="" size="10" pattern=".{3,}" title="Minimum: 3 characters"> 
+                        <input type="submit" value="Search">
+                    </form> 
+                        <form method="POST" action="http://clfn.on.ca:8080/family.php" style="display : inline;" id="top_favorites_select">
+                            <img src="{% static 'favorite_blue.png' %}"> 
+                            <select size="1" name="humo_favorite_id" onchange="this.form.submit();" style="width: 115px; height:20px;">
+                                <option value="">Favourites list:</option>
+                            </select>
+                        </form>
+            </div>
+            <div id="humo_menu">
+                <ul class="humo_menu_item">
+                    <li class="mobile_hidden">
+                        <a href="http://clfn.on.ca:8080/index.php?database=">Home</a>
+                    </li>
+                    <li class="mobile_visible">
+                        <div class="ltrsddm">
+                            <a href="http://clfn.on.ca:8080/index.php?database=" onmouseover="mopen(event,&#39;m0x&#39;,&#39;?&#39;,&#39;?&#39;)" onmouseout="mclosetime()">
+                                <img src="{% static 'menu_mobile.png' %}" width="18">
+                            </a>
+                            <div id="m0x" class="sddm_abs" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                                <ul class="humo_menu_item2">
+                                    <li><a href="http://clfn.on.ca:8080/index.php?database=">Home</a></li>
+                                    <li id="current"><a href="http://clfn.on.ca:8080/login.php">Login</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/help.php">Help</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/info.php">HuMo-gen info</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/credits.php">HuMo-gen credits</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/info_cookies.php">HuMo-gen cookies</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ltrsddm">
+                            <a href="http://clfn.on.ca:8080/tree_index.php?database=&amp;reset=1" onmouseover="mopen(event,&#39;mft&#39;,&#39;?&#39;,&#39;?&#39;)" onmouseout="mclosetime()">Family tree&nbsp;
+                                <img src="{% static 'button3.png' %}" height="13" style="border:none;" class="mobile_hidden" alt="pull_down">
+                            </a>
+                            <div id="mft" class="sddm_abs" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                                <ul class="humo_menu_item2">
+                                    <li><a href="http://clfn.on.ca:8080/tree_index.php?database=&amp;reset=1">Family tree index</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="mobile_hidden">
+                        <div class="ltrsddm">
+                            <a href="http://clfn.on.ca:8080/help.php" onmouseover="mopen(event,&#39;m2x&#39;,&#39;?&#39;,&#39;?&#39;)" onmouseout="mclosetime()">Help&nbsp;
+                                <img src="{% static 'button3.png' %}" height="13" style="border:none;" alt="pull_down">
+                            </a>
+                            <div id="m2x" class="sddm_abs" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                                <ul class="humo_menu_item2">
+                                    <li><a href="http://clfn.on.ca:8080/help.php">Help</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/info.php">HuMo-gen info</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/credits.php">HuMo-gen credits</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/info_cookies.php">HuMo-gen cookies</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="current" class="mobile_hidden"><a href="http://clfn.on.ca:8080/login.php">Login</a></li>
+                    <li>
+                        <div class="ltrsddm">
+                            <a href="http://clfn.on.ca:8080/index.php?option=com_humo-gen" onmouseover="mopen(event,&#39;m4x&#39;,&#39;?&#39;,&#39;?&#39;)" onmouseout="mclosetime()">
+                                <img src="{% static 'flag.gif' %}" title="English (CA)" alt="English (CA)" style="border:none; height:14px"> 
+                                <img src="{% static 'button3.png' %}" height="13" style="border:none;" class="mobile_hidden" alt="pull_down">
+                            </a>
+                            <div id="m4x" class="sddm_abs" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                                <ul class="humo_menu_item2">                                        
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=cn"><img src="{% static 'flag(1).gif' %}" title="简体中文" alt="简体中文" style="border:none;"> 简体中文</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=zh"><img src="{% static 'flag(2).gif' %}" title="繁體中文" alt="繁體中文" style="border:none;"> 繁體中文</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=da"><img src="{% static 'flag(3).gif' %}" title="Dansk" alt="Dansk" style="border:none;"> Dansk</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=de"><img src="{% static 'flag(4).gif' %}" title="Deutsch" alt="Deutsch" style="border:none;"> Deutsch</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=en"><img src="{% static 'flag(5).gif' %}" title="English" alt="English" style="border:none;"> English</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=en_us"><img src="{% static 'flag(6).gif' %}" title="English (US)" alt="English (US)" style="border:none;"> English (US)</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=es"><img src="{% static 'flag(7).gif' %}" title="Español" alt="Español" style="border:none;"> Español</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=fr"><img src="{% static 'flag(8).gif' %}" title="Français" alt="Français" style="border:none;"> Français</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=he"><img src="{% static 'flag(9).gif' %}" title="עברית" alt="עברית" style="border:none;"> עברית</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=it"><img src="{% static 'flag(10).gif' %}" title="Italiano" alt="Italiano" style="border:none;"> Italiano</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=hu"><img src="{% static 'flag(11).gif' %}" title="Magyar" alt="Magyar" style="border:none;"> Magyar</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=nl"><img src="{% static 'flag(12).gif' %}" title="Nederlands" alt="Nederlands" style="border:none;"> Nederlands</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=no"><img src="{% static 'flag(13).gif' %}" title="Norsk" alt="Norsk" style="border:none;"> Norsk</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=fa"><img src="{% static 'flag(14).gif' %}" title="فارسی" alt="فارسی" style="border:none;"> فارسی</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=pt"><img src="{% static 'flag(15).gif' %}" title="Portuguese" alt="Portuguese" style="border:none;"> Portuguese</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=ru"><img src="{% static 'flag(16).gif' %}" title="Русский" alt="Русский" style="border:none;"> Русский</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=sk"><img src="{% static 'flag(17).gif' %}" title="Slovensky" alt="Slovensky" style="border:none;"> Slovensky</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=fi"><img src="{% static 'flag(18).gif' %}" title="Suomi" alt="Suomi" style="border:none;"> Suomi</a></li>
+                                    <li><a href="http://clfn.on.ca:8080/index.php?language=sv"><img src="{% static 'flag(19).gif' %}" title="Swedish" alt="Swedish" style="border:none;"> Swedish</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="http://clfn.on.ca:8080/user_settings.php">
+                            <img src="{% static 'settings.png' %}" alt="Settings">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            <form name="form1" method="post" action="{% url 'login' %}"><br>
+                {% csrf_token %}
+                <table class="humo" cellspacing="0" align="center">
+                    <tbody>
+                        <tr class="table_headline">
+                            <th class="fonts" colspan="2">Login</th>
+                        </tr>
+                        <tr>
+                            <td>Username or e-mail address:</td>
+                            <td>
+                                <input class="fonts" name="username" type="text" size="20" maxlength="25">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td>
+                                <input class="fonts" name="password" type="password" size="20" maxlength="50">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><br></td>
+                            <td>
+                                <input class="fonts" type="submit" name="Submit" value="Login">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div id="turnkey-credit"> 
+        <div style="clear: both;"> 
+            <a href="https://www.turnkeylinux.org/wordpress">WordPress Appliance</a> - Powered by 
+            <a href="https://www.turnkeylinux.org/">TurnKey Linux</a> 
+        </div> 
+    </div>
+</body>
+</html>
